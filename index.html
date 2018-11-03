@@ -2,9 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>carChain</title>
+    <script src="js/config.js"></script>
+    <script src="js/dropRight.js"></script>
+    <style>
+        #topBar{
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            height: 10%;
+            width: 100%;
+            background-color: #2e2e2e;
+        }
+        #leftBar{
+            position: absolute;
+            top: 10%;
+            left: 0;
+            height: 90%;
+            width: 20%;
+            background-color: #2b334f;
+        }
+        #map{
+            position: absolute;
+            top: 10%;
+            left: 20%;
+            height: 90%;
+            width: 80%;
+        }
+        #rightBar{
+            position: absolute;
+            top: 10%;
+            right: 0;
+            height: 90%;
+            width: 80%;
+            z-index: 20;
+            background-color: #2b334f;
+        }
+        #rightBar_drop{
+            position: absolute;
+            top: 10%;
+            right: 0;
+            height: 90%;
+            width: 0%;
+        }
+        #footer{
+            position: absolute;
+            top: 100%;
+            left: 0;
+            height: 10%;
+            width: 100%;
+            background-color: #2e2e2e;
+        }
+        .round{
+            border-radius: 100%; /* Радиус скругления */
+            border: 0px solid; /* Параметры рамки */
+            position: absolute;
+            top: 5%;
+            right: 1%;
+        }
+        #rightBar_button{
+            border-radius: 100%; /* Радиус скругления */
+            border: 0px solid; /* Параметры рамки */
+            position: absolute;
+            top: 50%;
+            right: 1%;
+            z-index: 10;
+        }
+        .buttonDropBar{
+            border-radius: 100%; /* Радиус скругления */
+            border: 0px solid; /* Параметры рамки */
+            position: absolute;
+            top: 50%;
+            left: 1%;
+            z-index: 10;
+        }
+        .owner{
+            color: whitesmoke;
+            font-family: "Courier New", Courier;
+            font-style: inherit;
+            position: absolute;
+            right: 6%;
+            top: 30%;
+        }
+        .line{
+            position: absolute;
+            left: 0;
+        }
+    </style>
 </head>
 <body>
+    <div id="topBar">
+        <h2 class="owner">Ivan Pankov</h2>
+        <p><img src="images/XuGrAtD-SB8_1.jpg" width="68" height="68" alt="" class="round"></p>
+        <!--<p><img src="images/pulse.png" width="500" height="68" class="pulse"></p>
+        <p><img src="images/MDlogo.png" width="90" height="68" class="logo"></p>-->
+    </div>
+    <div id="rightBar_button">
+        <p><img src="images/arrow_left.png" width="68" height="68" alt="" onclick="dropUp()"></p>
+    </div>
+    <div id="leftBar">
+    </div>
+    <div id="map">
+        <script>
+        var map;
+        function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 55.761315757185166, lng: 37.65203475952149},
+        styles: mapStyle,
+        zoom: 11
+        });
 
+        google.maps.event.addListener(map, 'click', function(event) {
+        placeMarker(event.latLng);
+        pointLocation = event.latLng;
+        console.log('pointLocation: ', pointLocation);
+        });
+
+        }
+        </script>
+    </div>
+    <div id="rightBar_drop">
+        <p><img src="images/arrow_right.png" width="68" height="68" alt="" class="buttonDropBar" onclick="dropDown()"></p>
+        <p><img src="images/line.png" width="3" height="680" class="line"></p>
+    </div>
+    <div id="footer"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtJsuDvrKcBeURzwglw1kfPDdOyEAEtPU&callback=initMap"
+            async defer></script>
 </body>
 </html>
