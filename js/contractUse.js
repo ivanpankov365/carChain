@@ -27,8 +27,10 @@ function deployContract(){
 function onOff(){
     if(on){
         document.getElementById('onOff').innerText = 'ON';
+        on = true;
     }else {
         document.getElementById('onOff').innerText = 'OFF';
+        on = false;
     }
     let contractInstance = contractFace.at(contractAddress);
     contractInstance.status_lease({from: web3.eth.accounts[0]}, function(error, result){
