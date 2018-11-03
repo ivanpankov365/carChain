@@ -70,7 +70,7 @@
             border-radius: 100%; /* Радиус скругления */
             border: 0px solid; /* Параметры рамки */
             position: absolute;
-            top: 50%;
+            top: 44%;
             right: 1%;
             z-index: 10;
         }
@@ -164,49 +164,49 @@
             margin: 10px 0;
         }
         #item1{
-            background-image: url("images/1.webp");
+            background-image: url("images/1.jpg");
             background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
         }
         #item2{
-            background-image: url("images/2.webp");
+            background-image: url("images/2.jpg");
             background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
         }
         #item3{
-            background-image: url("images/3.webp");
+            background-image: url("images/3.jpg");
             background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
         }
         #item4{
-            background-image: url("images/4.webp");
+            background-image: url("images/4.jpg");
             background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
         }
         #item5{
-             background-image: url("images/5.webp");
+             background-image: url("images/5.jpg");
              background-size: 100%;
              background-position: center;
              background-repeat: no-repeat;
          }
         #item6{
-            background-image: url("images/6.webp");
+            background-image: url("images/6.jpg");
             background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
         }
         #item7{
-            background-image: url("images/7.webp");
+            background-image: url("images/7.jpg");
             background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
         }
         #item8{
-            background-image: url("images/8.webp");
+            background-image: url("images/8.jpg");
             background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
@@ -349,6 +349,46 @@
             background-color: #3c4466;
             background-image: -webkit-linear-gradient(top, #3c4466 0%, #3c4466 100%);
         }
+        #carCard{
+            position: absolute;
+            width: 80%;
+            height: 60%;
+            top: 5%;
+            left: 10%;
+            background-color: #f8ffc7;
+            background-image: url("images/2.jpg");
+            background-size: 100%;
+            background-position-y: top;
+            background-repeat: no-repeat;
+        }
+        .stars{
+            position: absolute;
+            width: 80%;
+            height: 12%;
+            top: 45%;
+            left: 10%;
+        }
+        #number{
+            position: absolute;
+            top: 55%;
+            left: 18%;
+            font-family: "Courier New", Courier;
+            color: #2e2e2e;
+        }
+        #phone{
+            position: absolute;
+            top: 62%;
+            left: 18%;
+            font-family: "Courier New", Courier;
+            color: #2e2e2e;
+        }
+        #car{
+            position: absolute;
+            top: 70%;
+            left: 18%;
+            font-family: "Courier New", Courier;
+            color: #2e2e2e;
+        }
     </style>
 </head>
 <body>
@@ -363,6 +403,12 @@
     </div>
     <div id="leftBar">
         <button id="addCar-none">Add Car</button>
+        <div id="carCard">
+            <img src="images/stars.png" class="stars">
+            <h3 id="number">AD-821-TM</h3>
+            <h3 id="phone">+7(916)751-94-55</h3>
+            <h3 id="car">150 345 km</h3>
+        </div>
     </div>
     <div id="map">
         <script>
