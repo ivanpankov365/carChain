@@ -26,11 +26,13 @@ function deployContract(){
 
 function onOff(){
     if(on){
+        console.log('onOff', on);
         document.getElementById('onOff').innerText = 'ON';
-        on = true;
-    }else {
-        document.getElementById('onOff').innerText = 'OFF';
         on = false;
+    }else{
+        console.log('onOff', on);
+        document.getElementById('onOff').innerText = 'OFF';
+        on = true;
     }
     let contractInstance = contractFace.at(contractAddress);
     contractInstance.status_lease({from: web3.eth.accounts[0]}, function(error, result){
