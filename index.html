@@ -392,6 +392,13 @@
             font-family: "Courier New", Courier;
             color: #2e2e2e;
         }
+        #refresh-none{
+            display: none;
+        }
+        #refresh{
+            position: absolute;
+            bottom: 20%;
+        }
     </style>
 </head>
 <body>
@@ -407,6 +414,7 @@
     <div id="leftBar">
         <button class="addCar-none" onclick="deployContract()">Add Car</button>
         <button class="addCar-none" id="onOff" onclick="onOff()">ON</button>
+        <button class="addCar" id="refresh-none" onclick="refresh()">Refresh</button>
         <div id="carCard-none">
             <img src="images/stars.png" class="stars">
             <h3 id="number">AD-821-TM</h3>
@@ -419,10 +427,18 @@
         var map;
         function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 55.761315757185166, lng: 37.65203475952149},
+        center: {lat: 53.0796878, lng: 8.7924959},
         styles: mapStyle,
-        zoom: 11
+        zoom: 12,
+        icon: {
+            url: 'images/car-marker.png', // url
+            scaledSize: new google.maps.Size(40, 70), // scaled size
+            origin: new google.maps.Point(0, 0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+        }
         });
+
+
 
         google.maps.event.addListener(map, 'click', function(event) {
         placeMarker(event.latLng);
@@ -430,6 +446,24 @@
         console.log('pointLocation: ', pointLocation);
         });
 
+        }
+
+        function placeMarker(location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                icon: {
+                    url: 'images/car-marker.png', // url
+                    scaledSize: new google.maps.Size(40, 30), // scaled size
+                    origin: new google.maps.Point(0, 0), // origin
+                    anchor: new google.maps.Point(0, 0) // anchor
+                }
+            });
+            console.log('location.LatLng', location.lat());
+            console.log('location.LatLng', location.lng());
+            lng = location.lat();
+            lat = location.lng();
+            // markers.push(marker);
         }
         </script>
     </div>

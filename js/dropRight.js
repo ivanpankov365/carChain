@@ -21,3 +21,22 @@ function showCars() {
     add.className = 'addCar';
 
 }
+
+function refresh(){
+    console.log('hi');
+    let i = count%5;
+    count++;
+    if(marker){marker.setMap(null);}
+    var latLng = new google.maps.LatLng(markersLat[i], markersLng[i]);
+    marker = new google.maps.Marker({
+        position: latLng,
+        map: map,
+        icon: {
+            url: 'images/car-marker.png', // url
+            scaledSize: new google.maps.Size(40, 30), // scaled size
+            origin: new google.maps.Point(0, 0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+        }
+    });
+    marker.setMap(map);
+}

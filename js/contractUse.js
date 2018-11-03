@@ -10,16 +10,8 @@ function deployContract(){
                 document.getElementById('carCard-none').id = 'carCard';
                 document.getElementsByClassName('addCar')[0].className = 'addCar-none';
                 document.getElementsByClassName('addCar-none')[1].className = 'addCar';
+                document.getElementById('refresh-none').id = 'refresh';
             }
-            /*if(!contract.address) {
-                console.log(contract.transactionId);
-                contractAddress = contract.transactionId;
-                document.getElementById('carCard-none').id = 'carCard';
-                document.getElementsByClassName('addCar')[0].className = 'addCar-none';
-                document.getElementsByClassName('addCar-none')[1].className = 'addCar';
-            } else {
-                console.log(contract.address);
-            }*/
         }
     });
 }
