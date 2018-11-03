@@ -17,8 +17,7 @@ function showCars() {
     desc.className = 'inputsDes';
     let inputs = document.getElementsByClassName('inputs-none')[0];
     inputs.className = 'inputs';
-    let add = document.getElementById('addCar-none');
-    add.id = 'addCar';
-
+    let add = document.getElementsByClassName('addCar-none')[0];
+    add.className = 'addCar';
 
 }

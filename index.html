@@ -323,10 +323,10 @@
             text-align:left;
             resize: none;
         }
-        #addCar-none{
+        .addCar-none{
             display: none;
         }
-        #addCar{
+        .addCar{
             position: absolute;
             bottom: 4%;
             left: 10%;
@@ -348,6 +348,9 @@
         #addCar:hover{
             background-color: #3c4466;
             background-image: -webkit-linear-gradient(top, #3c4466 0%, #3c4466 100%);
+        }
+        #carCard-none{
+            display: none;
         }
         #carCard{
             position: absolute;
@@ -402,8 +405,9 @@
         <p><img src="images/arrow_left.png" width="68" height="68" alt="" onclick="dropUp()"></p>
     </div>
     <div id="leftBar">
-        <button id="addCar-none">Add Car</button>
-        <div id="carCard">
+        <button class="addCar-none" onclick="deployContract()">Add Car</button>
+        <button class="addCar-none" id="onOff" onclick="onOff()">ON</button>
+        <div id="carCard-none">
             <img src="images/stars.png" class="stars">
             <h3 id="number">AD-821-TM</h3>
             <h3 id="phone">+7(916)751-94-55</h3>
