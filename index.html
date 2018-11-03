@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>carChain</title>
+    <script>
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            alert('Please activate MetaMask Plugin and reload page! You can find it here: https://metamask.io/')
+        }
+    </script>
     <script src="js/config.js"></script>
     <script src="js/dropRight.js"></script>
+    <script src="js/contractUse.js"></script>
+    <script src="js/map.js"></script>
     <style>
         #topBar{
             position: absolute;
@@ -39,11 +49,7 @@
             background-color: #2b334f;
         }
         #rightBar_drop{
-            position: absolute;
-            top: 10%;
-            right: 0;
-            height: 90%;
-            width: 0%;
+            display: none;
         }
         #footer{
             position: absolute;
@@ -72,8 +78,8 @@
             border-radius: 100%; /* Радиус скругления */
             border: 0px solid; /* Параметры рамки */
             position: absolute;
-            top: 50%;
-            left: 1%;
+            top: 44%;
+            left: -2.6%;
             z-index: 10;
         }
         .owner{
@@ -88,6 +94,261 @@
             position: absolute;
             left: 0;
         }
+        .choiceCar-none{
+            display: none;
+        }
+        .choiceCar{
+            position: absolute;
+            top: 15%;
+            left: 7%;
+            width: 30%;
+            height: 30%;
+            background-image: url("images/no_photo.png");
+            background-size: 150%;
+            background-position: center;
+
+        }
+
+        ::-webkit-scrollbar {
+            width: 1px;
+            height: 1px;
+        }
+
+        ::-webkit-scrollbar-button {
+            width: 1px;
+            height: 1px;
+        }
+
+        body {
+            background: #111;
+        }
+
+        div {
+            box-sizing: border-box;
+        }
+
+        .horizontal-scroll-wrapper-none{
+            display: none;
+        }
+        .horizontal-scroll-wrapper {
+            position: absolute;
+            display: block;
+            top: 10%;
+            left: 7%;
+            width: calc(250px + 1px);
+            max-height: 1100px;
+            margin: 0;
+            padding-top: 1px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-transform: rotate(-90deg) translateY(-250px);
+            transform: rotate(-90deg) translateY(-250px);
+            -webkit-transform-origin: right top;
+            transform-origin: right top;
+        }
+        .horizontal-scroll-wrapper > div {
+            display: block;
+            padding: 5px;
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+            -webkit-transform-origin: right top;
+            transform-origin: right top;
+        }
+
+        .squares {
+            padding: 250px 0 0 0;
+        }
+        .squares > div {
+            width: 250px;
+            height: 250px;
+            margin: 10px 0;
+        }
+        #item1{
+            background-image: url("images/1.webp");
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #item2{
+            background-image: url("images/2.webp");
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #item3{
+            background-image: url("images/3.webp");
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #item4{
+            background-image: url("images/4.webp");
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #item5{
+             background-image: url("images/5.webp");
+             background-size: 100%;
+             background-position: center;
+             background-repeat: no-repeat;
+         }
+        #item6{
+            background-image: url("images/6.webp");
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #item7{
+            background-image: url("images/7.webp");
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #item8{
+            background-image: url("images/8.webp");
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .contentText{
+            color: whitesmoke;
+            font-family: "Courier New", Courier;
+            font-style: inherit;
+            font-size: 250%;
+            position: absolute;
+            left: 30%;
+            top: 1%;
+        }
+        .lable{
+            color: whitesmoke;
+            font-family: "Courier New", Courier;
+            font-style: inherit;
+            font-size: 150%;
+            position: absolute;
+            top: 40px;
+            left: 14%;
+        }
+        .lable1{
+            color: whitesmoke;
+            font-family: "Courier New", Courier;
+            font-style: inherit;
+            font-size: 150%;
+            position: absolute;
+            top: 40px;
+            left: 0%;
+        }
+        .lable2{
+            color: whitesmoke;
+            font-family: "Courier New", Courier;
+            font-style: inherit;
+            font-size: 150%;
+            position: absolute;
+            top: 140px;
+            left: 0%;
+        }
+        .lable3{
+            color: whitesmoke;
+            font-family: "Courier New", Courier;
+            font-style: inherit;
+            font-size: 150%;
+            position: absolute;
+            top: 240px;
+            left: 0%;
+        }
+        .input1{
+            font-type: sans-serif;
+            font-size: 170%;
+            color: #2e2e2e;
+            position: absolute;
+            top: 70px;
+            left: 0%;
+            height: 45px;
+            width: 85%;
+        }
+        .input2{
+            font-type: sans-serif;
+            font-size: 170%;
+            color: #2e2e2e;
+            position: absolute;
+            top: 170px;
+            left: 0%;
+            height: 45px;
+            width: 85%;
+        }
+        .input3{
+            font-type: sans-serif;
+            font-size: 170%;
+            color: #2e2e2e;
+            position: absolute;
+            top: 270px;
+            left: 0%;
+            height: 45px;
+            width: 85%;
+        }
+        .inputs-none{
+            display: none;
+        }
+        .inputs{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 50%;
+            width: 50%;
+        }
+        .inputsDes-none{
+            display: none;
+        }
+        .inputsDes{
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            height: 50%;
+            width: 50%;
+        }
+        textarea{
+            position: absolute;
+            top: 70px;
+            left: 14%;
+            width: 74%;
+            height: 63%;
+            /* font-family: ;*/
+            font-type: sans-serif;
+            font-size: 150%;
+            color: #2e2e2e;
+            margin: 0;
+            padding: 2%;
+            border-radius: 1px;
+            background-color: whitesmoke;
+            text-align:left;
+            resize: none;
+        }
+        #addCar-none{
+            display: none;
+        }
+        #addCar{
+            position: absolute;
+            bottom: 4%;
+            left: 10%;
+            width: 80%;
+            text-decoration:none;
+            text-align:center;
+            padding:11px 32px;
+            border:solid 1px #3c4466;
+            -webkit-border-radius:4px;
+            -moz-border-radius:4px;
+            border-radius: 4px;
+            font:18px Arial, Helvetica, sans-serif;
+            font-weight:bold;
+            color:#E5FFFF;
+            background-color: #222840;
+            background-image: -webkit-linear-gradient(top, #222840 0%, #222840 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222840', endColorstr='#222840',GradientType=0 );
+        }
+        #addCar:hover{
+            background-color: #3c4466;
+            background-image: -webkit-linear-gradient(top, #3c4466 0%, #3c4466 100%);
+        }
     </style>
 </head>
 <body>
@@ -101,6 +362,7 @@
         <p><img src="images/arrow_left.png" width="68" height="68" alt="" onclick="dropUp()"></p>
     </div>
     <div id="leftBar">
+        <button id="addCar-none">Add Car</button>
     </div>
     <div id="map">
         <script>
@@ -122,8 +384,35 @@
         </script>
     </div>
     <div id="rightBar_drop">
-        <p><img src="images/arrow_right.png" width="68" height="68" alt="" class="buttonDropBar" onclick="dropDown()"></p>
+        <p><img src="images/arrow_right_blue.png" width="68" height="68" alt="" class="buttonDropBar" onclick="dropDown()"></p>
         <p><img src="images/line.png" width="3" height="680" class="line"></p>
+        <h2 class="contentText">Add Car Information</h2>
+        <div class="horizontal-scroll-wrapper-none squares">
+            <div id="item1"></div>
+            <div id="item2"></div>
+            <div id="item3"></div>
+            <div id="item4"></div>
+            <div id="item5"></div>
+            <div id="item6"></div>
+            <div id="item7"></div>
+            <div id="item8"></div>
+        </div>
+        <div class="inputsDes-none">
+            <label class="lable"><b>Description :</b></label>
+            <textarea></textarea>
+        </div>
+        <div class="inputs-none">
+            <label class="lable1"><b>Car number :</b></label>
+            <input class="input1" name="first" type="text">
+            <label class="lable2"><b>Your phone number :</b></label>
+            <input class="input2" name="last" type="text">
+            <label class="lable3"><b>Price :</b></label>
+            <input class="input3" name="last" type="text">
+        </div>
+
+
+        <p><input type="file" multiple accept="image/*" class="choiceCar" onchange="showCars()"></p>
+        <!--<button onclick="deployContract()">Add Car</button>-->
     </div>
     <div id="footer"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtJsuDvrKcBeURzwglw1kfPDdOyEAEtPU&callback=initMap"
