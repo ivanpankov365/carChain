@@ -11,7 +11,40 @@ function deployContract(){
                 document.getElementsByClassName('addCar')[0].className = 'addCar-none';
                 document.getElementsByClassName('addCar-none')[1].className = 'addCar';
                 document.getElementById('refresh-none').id = 'refresh';
-
+                let urlJSON = 'http://10.90.23.72:8080/postCar';
+                let params = '{\n' +
+                    '"priceAllDays": 4520.99,\n' +
+                    '"manual": true,\n' +
+                    '"websiteId": "reni",\n' +
+                    '"vehicle": "Fiat Punto or similar",\n' +
+                    '"location": {\n' +
+                    '"pickUp": {\n' +
+                    '"address": null,\n' +
+                    '"distanceToSearchLocationInKm": 0,\n' +
+                    '"geoInfo": [\n' +
+                    '  55.9497,\n' +
+                    '  -3.3635\n' +
+                    '],\n' +
+                    '}\n' +
+                    '},\n' +
+                    '"chained": true\n' +
+                    '}';
+                console.log(params)
+                fetch(urlJSON,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        method: 'POST',
+                        body: params
+                    })
+                    .then((res1) => {
+                        console.log('res1.token', res1);
+                        res1.text().then((res2) => {
+                            resolve(res2);
+                            console.log('res2.token', res2);
+                        });
+                    });
             }
         }
     });
