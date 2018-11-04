@@ -399,6 +399,25 @@
             position: absolute;
             bottom: 20%;
         }
+        .leftBarImg{
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            width: 80%;
+            height: 70%;
+        }
+        .gm-style-mtc{
+            display: none;
+        }
+        .gmnoprint{
+            display: none;
+        }
+        .gm-svpc{
+            display: none;
+        }
+        .gm-control-active{
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -412,6 +431,7 @@
         <p><img src="images/arrow_left.png" width="68" height="68" alt="" onclick="dropUp()"></p>
     </div>
     <div id="leftBar">
+        <!--<img src="images/leftBar.png" alt="" class="leftBarImg">-->
         <button class="addCar-none" onclick="deployContract()">Add Car</button>
         <button class="addCar-none" id="onOff" onclick="onOff()">ON</button>
         <button class="addCar" id="refresh-none" onclick="refresh()">Refresh</button>
@@ -437,7 +457,6 @@
             anchor: new google.maps.Point(0, 0) // anchor
         }
         });
-
 
 
         google.maps.event.addListener(map, 'click', function(event) {

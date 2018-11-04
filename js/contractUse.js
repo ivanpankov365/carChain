@@ -11,6 +11,7 @@ function deployContract(){
                 document.getElementsByClassName('addCar')[0].className = 'addCar-none';
                 document.getElementsByClassName('addCar-none')[1].className = 'addCar';
                 document.getElementById('refresh-none').id = 'refresh';
+
             }
         }
     });
