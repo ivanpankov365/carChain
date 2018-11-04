@@ -88,7 +88,7 @@
             font-style: inherit;
             position: absolute;
             right: 6%;
-            top: 30%;
+            top: 15%;
         }
         .line{
             position: absolute;
@@ -418,12 +418,46 @@
         .gm-control-active{
             display: none;
         }
+        .link{
+            position: absolute;
+            top: 32%;
+            left: 57%;
+            font-family: "Courier New", Courier;
+            font-style: inherit;
+            font-size: 150%;
+            color: whitesmoke;
+            text-decoration: none
+        }
+        .vk{
+            position: absolute;
+            top: 18%;
+            left: 38%;
+            size: 60px;
+        }
+        .slack{
+            position: absolute;
+            top: 18%;
+            left: 43%;
+            size: 60px;
+        }
+        .facebook{
+            position: absolute;
+            top: 18%;
+            left: 48%;
+            size: 60px;
+        }
+        .telega{
+            position: absolute;
+            top: 18%;
+            left: 53%;
+            size: 60px;
+        }
     </style>
 </head>
 <body>
     <div id="topBar">
         <h2 class="owner">Ivan Pankov</h2>
-        <p><img src="images/XuGrAtD-SB8_1.jpg" width="68" height="68" alt="" class="round"></p>
+        <p><img src="images/QizLgrf6K-E.jpg" width="68" height="68" alt="" class="round"></p>
         <!--<p><img src="images/pulse.png" width="500" height="68" class="pulse"></p>
         <p><img src="images/MDlogo.png" width="90" height="68" class="logo"></p>-->
     </div>
@@ -517,7 +551,13 @@
         <p><input type="file" multiple accept="image/*" class="choiceCar" onchange="showCars()"></p>
         <!--<button onclick="deployContract()">Add Car</button>-->
     </div>
-    <div id="footer"></div>
+    <div id="footer">
+        <a href="http://startblock.online/" target="_blank" class="link">startblock.online</a>
+        <p><img src="images/VK.png" width="50" height="50" alt="" class="vk" ></p>
+        <p><img src="images/slack.png" width="50" height="50" alt="" class="slack" ></p>
+        <p><img src="images/facebook.png" width="50" height="50" alt="" class="facebook"></p>
+        <p><img src="images/Telegram_logo.png" width="50" height="50" alt="" class="telega"></p>
+    </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtJsuDvrKcBeURzwglw1kfPDdOyEAEtPU&callback=initMap"
             async defer></script>
 </body>
