@@ -61,7 +61,7 @@ function onOff(){
         on = true;
     }
     let contractInstance = contractFace.at(contractAddress);
-    contractInstance.status_lease({from: web3.eth.accounts[0]}, function(error, result){
+    contractInstance.change_status({from: web3.eth.accounts[0]}, function(error, result){
         console.log(result);
     });
 }
